@@ -1,0 +1,19 @@
+---
+declared-services:
+Hackaton-DB:
+    label: Cloudant NoSQL DB
+    plan: Lite  
+Conversation-Hackaton:
+    label: conversation
+    plan: free
+applications:
+- name: hackaton-demo
+  command: npm start
+  path: .
+  memory: 256M
+  instances: 1
+  services:
+  - Conversation-Hackaton
+  - Hackaton-DB
+  env:
+    NPM_CONFIG_PRODUCTION: false
